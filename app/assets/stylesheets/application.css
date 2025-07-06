@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+.furima-icon {
+  width: 150px;
+  height: auto; /* 縦は自動でバランスよく */
+}
