@@ -73,4 +73,5 @@ end
 RSpec.configure do |config|
   # 既存の設定に追加してOK
   config.include FactoryBot::Syntax::Methods
+  config.include Devise::Test::IntegrationHelpers, type: :request
 end

@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update]
   resources :messages, only: [:index] 
 
-  root 'items#index' 
+  root to: 'items#index'
+
 end
 
 
