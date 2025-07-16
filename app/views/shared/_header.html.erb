@@ -18,8 +18,8 @@
     <ul class='lists-right'>
       <% if user_signed_in? %>
         <li><span class="user-nickname"><%= current_user.nickname %></span></li>
-        <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete, data: { turbo: false }, class: "logout" %>
-</li>        <%# /link_toをbutton_toに変更しているためログアウト表示が変 %>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data: { turbo: false }, class: "logout" %>
+</li>        <%# /link_toをbutton_toに変更しているためログアウト表示が変%>
       
       <% else %>
         <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
