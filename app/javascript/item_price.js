@@ -9,7 +9,6 @@ const price = () => {
   priceInput.addEventListener("input", () => {
     const price = parseInt(priceInput.value);
     const inputValue = priceInput.value;
-    console.log(inputValue);
 
     if (isNaN(price) || price < 300 || price > 9999999) {
       addTaxDom.innerHTML = "";
