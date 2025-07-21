@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
+  has_one :order
 
   # ActiveStorageで画像を持たせる
   has_one_attached :image
