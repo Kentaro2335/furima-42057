@@ -1,21 +1,17 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
   before_action :set_select_data, only: [:new, :edit, :update]
-  before_action :set_item, only: [:show, :edit, :update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_unless_owner, only: [:edit, :update, :destroy]
 
   def edit
-    redirect_to root_path unless current_user == @item.user
   end
 
   def update
-    if current_user == @item.user
-      if @item.update(item_params)
-        redirect_to item_path(@item), notice: '商品を更新しました'
-      else
-        render :edit, status: :unprocessable_entity
-      end
+    if @item.update(item_params)
+      redirect_to item_path(@item), notice: '商品を更新しました'
     else
-      redirect_to root_path
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -39,7 +35,16 @@ class ItemsController < ApplicationController
   def show
   end
 
+  def destroy
+    @item.destroy
+    redirect_to root_path, notice: '商品を削除しました'
+  end
+
   private
+
+  def redirect_unless_owner
+    redirect_to root_path unless current_user == @item.user
+  end
 
   def set_item
     @item = Item.find(params[:id])
