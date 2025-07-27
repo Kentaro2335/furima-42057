@@ -68,3 +68,5 @@ class ItemsController < ApplicationController
     ).merge(user_id: current_user.id)
   end
 end
+
+# 商品情報編集機能の微修正
