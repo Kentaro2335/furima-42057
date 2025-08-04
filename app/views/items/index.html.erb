@@ -152,6 +152,9 @@
     <li class='list'>
       <%= link_to item_path(item) do %>
         <div class='item-img-content'>
+          <% if item.order.present? %>
+    <div class="sold-out-overlay">sold out</div>
+  <% end %>
           <%= image_tag item.image, class: "item-img" %>
           <%# 商品が売れていればsold outを表示しましょう %>
 

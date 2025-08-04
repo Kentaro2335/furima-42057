@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_select_data, only: [:new, :edit, :update]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :redirect_unless_owner, only: [:edit, :update, :destroy]
+  before_action :redirect_if_sold_out, only: [:edit, :update]
 
   def edit
   end
@@ -46,6 +47,10 @@ class ItemsController < ApplicationController
     redirect_to root_path unless current_user == @item.user
   end
 
+  def redirect_if_sold_out
+    redirect_to root_path if @item.order.present?
+  end
+
   def set_item
     @item = Item.find(params[:id])
   end
@@ -72,5 +77,3 @@ class ItemsController < ApplicationController
     ).merge(user_id: current_user.id)
   end
 end
-
-# 商品情報編集機能の微修正
