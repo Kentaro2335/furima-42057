@@ -1,5 +1,5 @@
 const pay = () => {
-  const payjp = Payjp('pk_test_ad3c44dc66fef70952944a0a'); 
+  const payjp = Payjp(gon.public_key);
   const elements = payjp.elements();
 
   const numberElement = elements.create('cardNumber');
@@ -36,3 +36,4 @@ const pay = () => {
 };
 
 window.addEventListener("turbo:load", pay);
+window.addEventListener("turbo:render", pay);

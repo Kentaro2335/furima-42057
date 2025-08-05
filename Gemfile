@@ -87,3 +87,5 @@ group :development, :test do
 end
 
 gem 'payjp'
+
+gem 'gon'

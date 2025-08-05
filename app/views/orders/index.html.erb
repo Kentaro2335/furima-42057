@@ -31,13 +31,8 @@
     </div>
     <%# /支払額の表示 %>
 
-    <% if @order_address.errors.any? %>
-  <div class="error-messages" style="text-align: center; color: red; margin-bottom: 20px;">
-    <% @order_address.errors.full_messages.each do |message| %>
-      <p><%= message %></p>
-    <% end %>
-  </div>
-<% end %>
+    <%= render 'shared/error_messages', object: @order_address %>
+ 
 
 
     <%= form_with model: @order_address, id: 'charge-form', class: 'transaction-form-wrap', url: item_orders_path(@item), local: true do |f| %>
@@ -136,5 +131,7 @@
   </div>
 </div>
 <%= render "shared/second-footer"%>
+
+<%= include_gon %>
 
 
