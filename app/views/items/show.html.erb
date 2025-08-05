@@ -10,7 +10,7 @@
   <% if @item.image.attached? %>
     <div class="item-image-wrapper" style="position: relative;">
       <% if @item.order.present? %>
-        <div class="sold-out-overlay">sold out</div>
+        <div class="sold-out"><span>sold out</span></div>
       <% end %>
       <%= image_tag @item.image, class: "item-box-img" %>
     </div>

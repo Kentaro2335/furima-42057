@@ -16,7 +16,7 @@ const pay = () => {
 
     payjp.createToken(numberElement).then((response) => {
       if (response.error) {
-        alert("カード情報に誤りがあります");
+        return;
       } else {
         const token = response.id;
         const tokenObj = document.createElement("input");

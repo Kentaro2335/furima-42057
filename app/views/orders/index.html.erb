@@ -32,9 +32,9 @@
     <%# /支払額の表示 %>
 
     <% if @order_address.errors.any? %>
-  <div class="error-messages">
+  <div class="error-messages" style="text-align: center; color: red; margin-bottom: 20px;">
     <% @order_address.errors.full_messages.each do |message| %>
-      <p style="color: red;"><%= message %></p>
+      <p><%= message %></p>
     <% end %>
   </div>
 <% end %>
