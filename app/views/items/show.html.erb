@@ -7,12 +7,15 @@
     </h2>
 
     <div class="item-img-content">
-      <% if @item.image.attached? %>
-        <div class="item-image-wrapper">
-          <%= image_tag @item.image, class: "item-box-img" %>
-        </div>
+  <% if @item.image.attached? %>
+    <div class="item-image-wrapper" style="position: relative;">
+      <% if @item.order.present? %>
+        <div class="sold-out"><span>sold out</span></div>
       <% end %>
+      <%= image_tag @item.image, class: "item-box-img" %>
     </div>
+  <% end %>
+</div>
 
     <div class="item-price-box">
       <span class="item-price">
@@ -24,13 +27,15 @@
     </div>
  
     <% if user_signed_in? %>
-     <% if current_user.id == @item.user_id %>
+     <% if current_user.id == @item.user_id && @item.order.nil? %>
       <%= link_to "商品の編集", edit_item_path(@item), class: "item-red-btn" %>
       <p class="or-text">or</p>
       <%= link_to "削除", "#", data: { turbo_method: :delete }, class: "item-destroy" %>
      <% else %>
-      <%= link_to "購入画面に進む", "#", class: "item-red-btn" %>
-     <% end %> 
+  <% unless @item.order.present? %>
+    <%= link_to "購入画面に進む", item_orders_path(@item), data: { turbo: false }, class: "item-red-btn" %>
+  <% end %>
+<% end %>
     <% end %>
 
     <div class="item-explain-box">
