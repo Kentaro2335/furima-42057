@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   before_action :redirect_if_invalid_access
 
   def index
+    @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
   end

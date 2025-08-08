@@ -33,8 +33,6 @@
 
     <%= render 'shared/error_messages', object: @order_address %>
  
-
-
     <%= form_with model: @order_address, id: 'charge-form', class: 'transaction-form-wrap', url: item_orders_path(@item), local: true do |f| %>
 
     <%# カード情報の入力 %>

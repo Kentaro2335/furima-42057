@@ -15,8 +15,9 @@ const pay = () => {
     e.preventDefault();
 
     payjp.createToken(numberElement).then((response) => {
+      console.log("3")
       if (response.error) {
-        return;
+        // return;
       } else {
         const token = response.id;
         const tokenObj = document.createElement("input");
@@ -29,8 +30,9 @@ const pay = () => {
         expiryElement.clear();
         cvcElement.clear();
 
-        form.submit();
       }
+      form.submit();
+     
     });
   });
 };
